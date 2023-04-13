@@ -7,8 +7,8 @@ interface GalleryProps {
 }
 
 interface GalleryArrayType {
-
-    item: GalleryItemPropsItem
+    newDataItem: GalleryItemPropsNewDataItem,
+    dataItem: GalleryItemPropsItem
 }
 
 function Gallery(props: GalleryProps){

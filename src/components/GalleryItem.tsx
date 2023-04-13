@@ -56,7 +56,7 @@ function GalleryItem(props: GalleryItemProps){
     )
 } 
 
-interface GalleryItemPropsNewDataItem {
+export interface GalleryItemPropsNewDataItem {
     name: string, 
     age: number,
     isHuman: boolean,
