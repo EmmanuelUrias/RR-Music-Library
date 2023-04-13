@@ -1,12 +1,27 @@
-import GalleryItem from './GalleryItem'
+import GalleryItemPropsItem from '../models/GalleryItemPropsItem'
+import GalleryItem, { GalleryItemPropsNewDataItem } from './GalleryItem'
 
-function Gallery(props){
 
-    const display = props.data.map((item, index) => {
+interface GalleryProps {
+    data: GalleryItemPropsItem[],
+}
+
+interface GalleryArrayType {
+
+    item: GalleryItemPropsItem
+}
+
+function Gallery(props: GalleryProps){
+
+    const display = props.data.map((item: GalleryItemPropsItem, index: number) => {
         return (
             <GalleryItem item={item} key={index} />
         )
     })
+    // const handleOnClick = (e, viewState) => {
+    //     setView(!viewState)
+    //     return 0
+    // } 
 
     return (
         <div>

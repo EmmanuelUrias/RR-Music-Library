@@ -1,6 +1,12 @@
 import { useState } from 'react'
+import GalleryItemPropsItem from '../models/GalleryItemPropsItem'
 
-function GalleryItem(props){
+interface GalleryItemProps {
+    item: GalleryItemPropsItem,
+    newDataItem: GalleryItemPropsNewDataItem
+}
+
+function GalleryItem(props: GalleryItemProps){
     let [view, setView] = useState(false)
 
     const simpleView = () => {
@@ -35,16 +41,26 @@ function GalleryItem(props){
                 <h3>{props.item.collectionName}</h3>
                 <h4>{props.item.primaryGenreName}</h4>
                 <h4>{props.item.releaseDate}</h4>
+                <h4>{props.newDataItem.name}</h4>
+                <h4>{props.newDataItem.age}</h4>
+                <h4>{props.newDataItem.isHuman}</h4>
             </div>
         )
     }
 
     return (
-        <div onClick={() => setView(!view)}
+        <div onClick={(e) => props.newDataItem.handleOnClick(e, view)}
         style={{'display': 'inline-block'}}>
             {view ? detailView() : simpleView()}
         </div>
     )
 } 
+
+interface GalleryItemPropsNewDataItem {
+    name: string, 
+    age: number,
+    isHuman: boolean,
+    handleOnClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>, view: boolean) => number
+}
 
 export default GalleryItem
